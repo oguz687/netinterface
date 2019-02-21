@@ -55,7 +55,7 @@ ROOT_URLCONF = 'netinterface.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +66,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+STATIC_ROOT="static/"
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,"static/templ")
 ]
 
 WSGI_APPLICATION = 'netinterface.wsgi.application'
