@@ -38,11 +38,10 @@
 							</tr>
 						</thead>
                         <tbody>
-                            {% for tahmin in tahminler  %}
+                            {% for i in beklenen  %}
                                 <tr>
-                                    <td href="">{{tahmin}}</td>
-                                    <td href="">{{metin}}</td>
-
+                                    <td href="">{{i.metin}}</td>
+                                    <td href="">{{i.tahmin}}</td>
                                 </tr>
 
                             {% endfor %}

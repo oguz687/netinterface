@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,render_to_response
 
 from django.http import HttpResponse
 from yapayzekacore import Yapayzeka
@@ -8,12 +8,18 @@ from django.template import loader
 
 
 def index(request):
-    template = loader.get_template("index.html")
-    orn = Yapayzeka()
-    predict = orn.predict_from_model()
-    model = Tahmin(tahmin=predict[0],metin=predict[1])
-    print(predict[0])
-    model.save()
-    context = {"tahminler":Tahmin.tahmin.join()}
+    docs_new2 = ["kitaplar", ]
+    entire=Tahmin.objects.all()
+    tahminler2=[]
+    metinler=[]
+    beklenenm=[]
+    toplam=[]
+    for i in entire:
+        metinler.append(i.metin)
+        tahminler2.append(i.tahmin)
+        beklenenm.append(i.beklenen)
+    for i in entire:
+        toplam.append(i)
 
-    return HttpResponse(template.render(context,request))
+    print(type(metinler))
+    return render(request,"index.html",{"beklenen":toplam})
